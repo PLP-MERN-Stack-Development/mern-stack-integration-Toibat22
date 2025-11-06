@@ -1,78 +1,257 @@
-# MERN Stack Integration Assignment
 
-This assignment focuses on building a full-stack MERN (MongoDB, Express.js, React.js, Node.js) application that demonstrates seamless integration between front-end and back-end components.
+---
 
-## Assignment Overview
+# MERN Blog Application
 
-You will build a blog application with the following features:
-1. RESTful API with Express.js and MongoDB
-2. React front-end with component architecture
-3. Full CRUD functionality for blog posts
-4. User authentication and authorization
-5. Advanced features like image uploads and comments
+Project Overview
+
+This is a full-stack MERN (MongoDB, Express.js, React.js, Node.js) blog application that allows users to create, read, update, and delete blog posts. Users can register, login, and interact with posts through likes, comments, and tags. The application demonstrates seamless integration between the front-end and back-end with advanced features such as image uploads, pagination, and search/filter functionality.
+
+
+---
+
+## Features Implemented
+
+User Authentication
+
+Registration, login, and protected routes for creating/editing posts.
+
+
+Posts
+
+Create, edit, delete, and view single posts.
+
+Featured image upload for posts using Cloudinary.
+
+Tagging of posts with comma-separated tags.
+
+Like/unlike functionality.
+
+
+Comments
+
+Users can add and delete comments on posts.
+
+Only authors or post owners can delete comments.
+
+
+Categories
+
+Assign posts to categories.
+
+Create and fetch categories from the backend.
+
+
+Pagination
+
+Posts are paginated for better user experience.
+
+
+Search & Filter
+
+Search posts by keywords.
+
+Filter posts by categories.
+
+
+Responsive UI
+
+Built with Tailwind CSS for a clean and responsive user interface.
+
+
+Optimistic UI Updates
+
+Likes and comments update immediately without page refresh.
+
+
+
+
+---
 
 ## Project Structure
 
-```
+
 mern-blog/
-├── client/                 # React front-end
-│   ├── public/             # Static files
-│   ├── src/                # React source code
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/          # Page components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── services/       # API services
-│   │   ├── context/        # React context providers
-│   │   └── App.jsx         # Main application component
-│   └── package.json        # Client dependencies
-├── server/                 # Express.js back-end
-│   ├── config/             # Configuration files
-│   ├── controllers/        # Route controllers
-│   ├── models/             # Mongoose models
-│   ├── routes/             # API routes
-│   ├── middleware/         # Custom middleware
-│   ├── utils/              # Utility functions
-│   ├── server.js           # Main server file
-│   └── package.json        # Server dependencies
-└── README.md               # Project documentation
-```
+│
+├── client/                     # React frontend
+│   ├── src/
+│   │   ├── assets/             
+│   │   │   
+│   │   ├── components/         # Reusable components (Navbar, etc.)
+│   │   ├── Pages/              # Pages like Home, Login, Register, CreatePost
+│   │   ├── services/           # API services (axios instances)
+│   │   ├── App.jsx              # Main App component with routes
+│   │   └── main.jsx             # Entry point
+│   ├
+│   └── package.json
+│
+├── server/                     # Express backend
+│   ├── controllers/            # Route handlers / business logic
+│   ├── models/                 # Mongoose models (User, Post, Category)
+│   ├── routes/                 # Express routes (auth, posts, categories)
+│   ├── middleware/             # Auth middleware, error handling
+│   ├── config/                 # DB connection, Cloudinary config
+│   ├── .env                     # Backend environment variables
+│   ├── .env.example
+│   ├── server.js               # Entry point for backend
+│   └── package.json
+├──screeshots/│                 # Screenshots for README
+├── README.md
+└── .gitignore
 
-## Getting Started
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week4-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+### Server
 
-## Files Included
+server/models – Mongoose models for Post, Category, and User.
 
-- `Week4-Assignment.md`: Detailed assignment instructions
-- Starter code for both client and server:
-  - Basic project structure
-  - Configuration files
-  - Sample models and components
+server/routes – API routes for posts, categories, and authentication.
 
-## Requirements
+server/controllers – Logic for handling requests.
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- npm or yarn
-- Git
+server/middleware – Authentication and error-handling middleware.
 
-## Submission
+server/.env – Environment variables (MongoDB URI, JWT secret, Cloudinary keys).
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
 
-1. Complete both the client and server portions of the application
-2. Implement all required API endpoints
-3. Create the necessary React components and hooks
-4. Document your API and setup process in the README.md
-5. Include screenshots of your working application
+Client
 
-## Resources
+client/src/components – Reusable UI components (Navbar, etc.).
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Express.js Documentation](https://expressjs.com/)
-- [React Documentation](https://react.dev/)
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Mongoose Documentation](https://mongoosejs.com/docs/) 
+client/src/Pages – Pages like Home, Login, Register, CreatePost, SinglePost.
+
+client/src/services/api.js – Axios service for API requests.
+
+
+
+---
+
+## Setup Instructions
+
+Prerequisites
+
+Node.js v18+
+
+MongoDB installed locally or use MongoDB Atlas
+
+
+Server
+
+1. Navigate to the server folder:
+
+cd server
+
+
+2. Install dependencies:
+
+pnpm install
+
+
+3. Create a .env file based on .env.example:
+
+MONGODB_URI=mongodb://localhost:27017/mern_blog
+JWT_SECRET=your_jwt_secret
+PORT=5000
+NODE_ENV=development
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_cloud_api_key
+CLOUDINARY_API_SECRET=your_cloud_api_secret
+
+
+4. Start the server:
+
+pnpm run dev
+
+
+
+Client
+
+1. Navigate to the client folder:
+
+cd client
+
+
+2. Install dependencies:
+
+pnpm install
+
+
+3. Start the client:
+
+pnpm run dev
+
+
+
+
+---
+
+## API Documentation
+
+Posts
+
+Method Endpoint Description
+
+GET /api/posts Get all posts
+GET /api/posts/:id Get a single post
+POST /api/posts Create a new post
+PUT /api/posts/:id Update a post
+DELETE /api/posts/:id Delete a post
+PUT /api/posts/:id/like Like/unlike a post
+POST /api/posts/:id/comment Add a comment
+DELETE /api/posts/:id/comment/:commentId Delete a comment
+
+
+Categories
+
+Method Endpoint Description
+
+GET /api/categories Get all categories
+POST /api/categories Create a category
+
+
+Authentication
+
+Method Endpoint Description
+
+POST /api/auth/register Register a new user
+POST /api/auth/login Login user and get JWT
+
+
+
+---
+
+Screenshots
+
+## Screenshots
+
+### Home Page
+![Home Page](./screenshots/home-page.jpeg)
+
+### Create Post
+![Create Post](./screenshots/create-post-page.jpeg)
+
+### Single Post View
+![Single Post](./screenshots/single-post-page.jpeg)
+
+### Login Page View
+![Login Page](./screenshots/login-page.jpeg)
+
+### Register Page View
+![Register Page](./screenshots/register-page.jpeg)
+
+---
+
+Notes
+
+All forms have client-side validation to prevent empty inputs.
+
+Protected routes ensure only authenticated users can create or edit posts.
+
+Cloudinary is used for storing uploaded images.
+
+Pagination, search, and filtering enhance the user experience.
+
+
+## AUTHOR
+ABDULHAMMED TOIBAT TAYE
+
+

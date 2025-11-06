@@ -14,6 +14,13 @@ const authRoutes = require('./routes/auth');
 
 // Load environment variables
 dotenv.config();
+console.log("Cloud Name:",
+  process.env.CLOUDINARY_CLOUD_NAME);
+console.log("API Key:",
+  process.env.CLOUDINARY_API_KEY);
+console.log("API Secret:",
+  process.env.CLOUDINARY_API_SECRET ? "Loaded" : "Missing");
+
 
 // Initialize Express app
 const app = express();
@@ -39,6 +46,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use('/api/posts', postRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/auth', authRoutes);
+
 
 // Root route
 app.get('/', (req, res) => {
